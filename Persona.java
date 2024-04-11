@@ -1,3 +1,4 @@
+import java.time.Instant;
 import java.util.Date;
 
 public class Persona {
@@ -8,11 +9,44 @@ public class Persona {
 
   private Date fechaNacimiento;
 
+ 
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public Date getFechaNacimiento() {
+    return fechaNacimiento;
+  }
+
+  public void setFechaNacimiento(Date fechaNacimiento) {
+    this.fechaNacimiento = fechaNacimiento;
+  }
+
   public void mostrarDatos() {
+    System.out.println("Nombre: " + this.nombre);
+    System.out.println("Id: " + this.id);
+    System.out.println("Fecha nacimiento: " + this.fechaNacimiento.toString());
+    System.out.println("Edad: " + calcularEdad());
   }
 
   private int calcularEdad() {
-  return 0;
+    Date currentDate = Date.from(Instant.now());
+    long years = java.time.temporal.ChronoUnit.YEARS.between( this.fechaNacimiento.toInstant()  , currentDate.toInstant() );
+    return (int) years;
+ 
   }
 
 }
