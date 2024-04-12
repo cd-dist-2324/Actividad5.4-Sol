@@ -4,18 +4,18 @@ public class Empresa {
 
   private String cif;
 
-  private int nombre;
+  private String nombre;
 
   /**
    * 
    * @element-type Empleado
    */
-  private ArrayList<Empleado> empleados;
+  private ArrayList<Empleado> empleados = new ArrayList<>();
   /**
    * 
    * @element-type Cliente
    */
-  private ArrayList<Cliente> clientes;
+  private ArrayList<Cliente> clientes = new ArrayList<>();
 
   public String getCif() {
     return cif;
@@ -25,11 +25,11 @@ public class Empresa {
     this.cif = cif;
   }
 
-  public int getNombre() {
+  public String getNombre() {
     return nombre;
   }
 
-  public void setNombre(int nombre) {
+  public void setNombre(String nombre) {
     this.nombre = nombre;
   }
 
@@ -49,4 +49,26 @@ public class Empresa {
     this.clientes = clientes;
   }
 
+  public void addEmpleado(Empleado e){
+    //relación bidireccional
+    e.setEmpresa(this);
+    this.empleados.add(e);
+  }
+
+  public void removeEmpleado(Empleado e){
+    e.setEmpresa(null);
+    this.empleados.remove(e);
+  }
+
+
+  public void addCliente(Cliente cliente){
+    //relación bidireccional
+    cliente.setEmpresa(this);
+    this.clientes.add(cliente);
+  }
+
+  public void removeCliente(Cliente cliente){
+    cliente.setEmpresa(null);
+    this.clientes.remove(cliente);
+  }
 }

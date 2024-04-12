@@ -22,9 +22,10 @@ public class Cliente extends Persona {
 
     @Override
     public void mostrarDatos() {
-      // TODO Auto-generated method stub
+      
       super.mostrarDatos();
       System.out.println("Teléfono: " + this.telf);
+      System.out.println("Empresa: " + this.empresa!=null? this.empresa.getNombre(): "");
     }
 
     

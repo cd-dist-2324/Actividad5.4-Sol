@@ -1,7 +1,7 @@
 import java.time.Instant;
 import java.util.Date;
 
-public class Persona {
+public abstract class Persona {
 
   private int id;
 
@@ -36,17 +36,22 @@ public class Persona {
   }
 
   public void mostrarDatos() {
+    System.out.println("******");
     System.out.println("Nombre: " + this.nombre);
     System.out.println("Id: " + this.id);
-    System.out.println("Fecha nacimiento: " + this.fechaNacimiento.toString());
+    System.out.println("Fecha nacimiento: " + this.fechaNacimiento!=null ? this.fechaNacimiento.toString(): "");
     System.out.println("Edad: " + calcularEdad());
+    
   }
 
   private int calcularEdad() {
     Date currentDate = Date.from(Instant.now());
-    long years = java.time.temporal.ChronoUnit.YEARS.between( this.fechaNacimiento.toInstant()  , currentDate.toInstant() );
-    return (int) years;
+   return  DateUtilities.getDiffYears(this.fechaNacimiento, currentDate); 
+    
  
   }
+
+
+  
 
 }
