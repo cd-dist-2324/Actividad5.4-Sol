@@ -3,6 +3,8 @@ public class Empleado extends Persona {
     private Empresa empresa;
     private Directivo jefe;
 
+    private Float salarioBruto;
+
     public Empresa getEmpresa() {
         return empresa;
     }
@@ -25,5 +27,15 @@ public class Empleado extends Persona {
         super.mostrarDatos();
         System.out.println("Empresa: " + this.empresa!=null? this.empresa.getNombre(): "");
     }
+
+    public Float getSalarioBruto() {
+        return salarioBruto;
+    }
+
+    public void setSalarioBruto(Float salarioBruto) {
+        this.salarioBruto = salarioBruto;
+    }
+
+    
 
 }
